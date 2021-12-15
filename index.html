@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">    
+    <link rel="stylesheet" href="./css/reset.css">
+    <title>INDIGO</title>
+    <style>
+        /* *{box-sizing: border-box;margin: 0;padding: 0;} */
+
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        :root{
+            font-family: 'sans-serif';
+            font-weight: 400;
+            font-size: 16px;
+            color: #616161;
+            line-height: 29px;
+        }
+    
+        /* .container{
+            width: 100%;
+            max-width: 1132px;
+            margin: 0 auto;
+        } */
+        
+        .jumbo{
+            max-width: 100%;
+        }
+
+        .wrap{
+            overflow: hidden; 
+        }
+
+        /* HEADER 스타일 */
+        .header .container{
+            padding:20px;
+        }
+
+        .header h1{
+            float: left;
+        }
+
+        .header .btn-nav{
+            float: right;
+        }
+
+        .header .btn-nav span{
+            width: 30px;
+            height: 4px;
+            border-radius: 2px;
+            margin: 10px 0;
+            background-color: #3f51b5;
+            text-indent: -99999px;
+
+        }
+
+        .header .nav{
+            display: none;
+        }
+
+        .header h1{
+            float: left;
+            font-weight: 700;
+            font-size: 32px;
+            color: #3f51b5;
+        }
+
+        /* 태블릿(최소 뷰포트 너비 768px) 스타일 */
+        @media(min-width:768px){
+            .header .btn-nav{
+            display: none;
+        }
+            .header .nav{
+                display: block;
+            }
+
+        }
+
+        /* 데스크탑(최소 뷰토프 너비 1200px) 스타일 */
+        @media(min-width:1200px){}
+
+    </style>
+</head>
+<body>
+    <section class="wrap">
+        <header class="header">
+            <div class="container jumbo">
+                <div class="contents clearfix">
+                    <h1><a href="./index.html">INDIGO</a></h1>
+                    <div class="btn-nav">
+                        <span>네비게이션 호출 버튼</span>
+                    </div>
+                    
+                    <nav class="nav">
+                        <ul>
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="#">WE ARE</a></li>
+                            <li><a href="#">WORK</a></li>
+                            <li><a href="#">BLOG</a></li>
+                            <li><a href="#">CONTACT US</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </section>
+</body>
+</html>
