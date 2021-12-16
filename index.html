@@ -6,95 +6,489 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">    
     <link rel="stylesheet" href="./css/reset.css">
+    <!-- swiper js slider -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
     <title>INDIGO</title>
     <style>
-        /* *{box-sizing: border-box;margin: 0;padding: 0;} */
-
-        .clearfix::after{
-            content: '';
-            display: block;
-            clear: both;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
         :root{
-            font-family: 'sans-serif';
-            font-weight: 400;
-            font-size: 16px;
-            color: #616161;
-            line-height: 29px;
+            font-family:'Noto Sans KR','sans-serif';
+            font-weight:400;
+            font-size:16px;
+            color:#616161;
+            line-height:29px;
         }
-    
-        /* .container{
-            width: 100%;
-            max-width: 1132px;
-            margin: 0 auto;
-        } */
-        
+
+        .clearfix::after{
+            content:'';
+            display:block;
+            clear:both;
+        }
+
+        .container{
+            /* width:100%; */
+            max-width:1132px;
+            margin:0 auto;
+            padding: 0 12px;
+        }
+
         .jumbo{
-            max-width: 100%;
-        }
+            max-width:100%;
+            padding: 0;
+        }     
 
         .wrap{
-            overflow: hidden; 
+            overflow:hidden;
         }
 
-        /* HEADER 스타일 */
+        .wrap>.sec{
+            margin-bottom: 124px;
+        }
+
+        .hidden-tit{
+            height: 0;
+            overflow: hidden;
+        }
+
+        .sec-tit{
+            font-size: 32px;
+            color: #3f51b5;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .sec-list{
+            float: left;
+            width: 100%;
+        }
+
+        /* header 스타일 */
+        .header{
+            background-color: #fff;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 100;
+        }
+
         .header .container{
+            max-width: 1440px;
             padding:20px;
         }
 
         .header h1{
-            float: left;
+            float:left;
+            font-weight:700;
+            font-size:26px;
+            color:#3f51b5;
+            text-transform:uppercase;
         }
 
         .header .btn-nav{
-            float: right;
-            cursor: pointer;
+            float:right;
+            cursor:pointer;
+            margin-top: 5px;
         }
 
         .header .btn-nav span{
-            width: 30px;
-            height: 2px;
-            border-radius: 2px;
-            margin: 6px 0;
-            background-color: #3f51b5;
-            text-indent: -99999px;
-
+            width:30px;
+            height:2px;
+            margin:6px 0;
+            border-radius:2px;
+            background-color:#3f51b5;
+            text-indent:-99999px;
         }
 
-        .header .btn-nav::before,.header .btn-nav::after{
-            content: '';
-            display: block;
-            width: 30px;
-            height: 2px;
-            border-radius: 2px;
-            background-color: #3f51b5;
+        .header .btn-nav::before,
+        .header .btn-nav::after{
+            content:'';
+            display:block;
+            width:30px;
+            height:2px;
+            border-radius:2px;
+            background-color:#3f51b5;
         }
 
         .header .nav{
-            display: none;
+            display:none;
+            position: fixed;
+            left:0;
+            right:0;
+            top:0;
+            bottom: 0;
+
+            padding: 20px 20px 20px 20px;
+            background-color: #000;
+            text-align: right;
         }
 
-        .header h1{
+        .btn-close{
+            display: inline-block;
+            width: 60px;
+            margin-bottom: 40px;
+            border: 1px solid #fff;
+            padding:5px;
+            border-radius: 4px;
+
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .header li{
             float: left;
-            font-weight: 700;
-            font-size: 32px;
-            color: #3f51b5;
+            width: 100%;
+            margin: 30px 0;
+
+            font-weight: 500;
+            font-size: 28px;
+            color:#fff;
+            text-align: left;
         }
 
-        /* 태블릿(최소 뷰포트 너비 768px) 스타일 */
-        @media(min-width:768px){
-            .header .btn-nav{
-            display: none;
+        /* 메인슬라이더 스타일 */
+        .main-slider{
+            position: relative;
+            z-index: 99;
+            padding-top: 68.992px;
         }
+
+        .swiper-pagination-bullet{
+            width: 12px;
+            height: 12px;
+            margin: 0 6px !important;
+            border-radius: 50%;
+            background-color: #616161 !important;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active{
+            background-color: #3f51b5 !important;
+        }
+
+        /* we are 스타일 */
+        .we-are .sec-tit{
+            margin-bottom: 60px;
+        }
+
+        .we-are .sec-tit h2,
+        .we-are .sec-tit p{
+            float: left;    
+            width: 100%;  
+        }
+
+        .we-are .sec-tit h2{
+            margin-bottom: 30px;
+        }
+
+        .we-are .sec-tit p{
+           font-size: 16px;
+           color: #616161;
+           line-height: 22px;
+           text-transform: none;
+        }
+
+        .we-are .img-box{
+            height: 52px;
+        }
+
+        .we-are .img-box img{
+            width: auto;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .we-are .sec-list{
+            margin-bottom: 50px;
+        }
+
+        ..we-are .sec-list:last-child{
+            margin-bottom: 0;
+        }
+
+        .we-are .sec-list-tit{
+            margin: 12px 0 10px;
+            font-size: 16px;
+            color: #3f51b5;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .we-are .sec-list-txt{
+            font-size: 14px;
+            line-height: 23px;
+            text-align: center;
+        }
+
+        .divider .contents{
+            height: 2px;
+            background-color: #eeeeee;
+            text-indent: -99999px;
+        }
+
+        /* work 스타일 */
+        .work .sec-tit{
+            max-width: 1132px;
+            margin: 0 auto 60px;
+            margin-bottom: 60px;
+        }
+
+        .work .sec-list{
+            float: left;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work .sec-list::before{
+            content: '';
+            display: block;
+
+            position: absolute;
+            left:0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: rgb(63, 81, 181,0.7);
+            transform: translateY(-101%);
+        }
+
+        .work .sec-list .sec-list-tit{
+            position: absolute;
+            top:20px;
+            left:20px;
+            font-size: 23px;
+            color: #fff;
+            transform: translateY(-100px);
+        }
+
+        .work .sec-list .sec-list-txt{
+            position: absolute;
+            top:50px;
+            left:20px;
+            font-size: 11px;
+            color: #fff;
+            transform: translateY(-130px);
+        }
+
+        .work .sec-list:hover::before,
+        .work .sec-list:hover .sec-list-tit,
+        .work .sec-list:hover .sec-list-txt{
+            transform: translateY(0);
+        }
+
+        .mini-divider .contents{
+            width: 20px;
+            height: 2px;
+            margin: 0 auto;
+            background-color: #3f51b5;
+            text-indent: -99999px;
+        }
+
+        /* blog 스타일 */
+        .blog .sec-tit,.blog .sec-contents{
+            float: left;
+            width: 100%;
+        }
+
+        .blog .sec-tit{
+            margin-bottom: 60px;
+        }
+
+        .blog .sec-list{
+            float: left;
+            width: calc(33.33333333333333% - 13.33333333333333px);
+            margin-right: 20px;
+            margin-bottom: 60px;
+        }
+
+        .blog .sec-list:last-child{
+            margin-bottom: 0;
+        }
+
+        .blog .sec-list:last-child{
+            margin-right: 0;
+        }
+
+        .blog .sec-list-tit{
+            font-size: 11px;
+            color: #9e9e9e;
+        }
+
+        .blog .sec-list-txt{
+            font-size: 16px;
+            color: #4e4e4e;
+            line-height: 27px;
+        }
+
+        .blog .img-box{
+            margin-bottom: 8px;
+        }
+
+        /* map 스타일 */
+        .wrap>.map{
+            margin-bottom: 0;
+        }
+
+        .map iframe{
+            width: 100%;
+            height: 60vw;
+        }
+
+        /* footer 스타일 */
+        .footer{
+            padding: 30px;
+            font-size: 16px;
+            color: #3f51b5;
+            text-align: center;
+        }
+
+        /* 테블릿(최소 뷰포트너비 768px) 스타일 */
+        @media (min-width:768px){
+
+            /* header 스타일 */
+            .header{
+                position: static;
+            }
+
+            .header .btn-nav{
+                display: none;
+            } 
+
             .header .nav{
-                display: block;
+                display: block !important;
+                float: right;
+                position: static;
+ 
+                padding: 0;
+                background-color: transparent;
+                text-align: left;
+            }
+
+            .btn-close{
+                display: none;
+            }
+
+            .header li{
+                width: auto;
+                margin: 0 0 0 26px;
+                font-weight: 600;
+                font-size: 16px;
+                color: #3f51b5;
+            }
+            
+            /* 메인슬라이더 스타일 */
+            .main-slider{
+                position: static;
+                padding-top: 0;
+            }    
+
+            /* we are 스타일 */
+            .we-are .sec-tit h2{
+                width: 30.03533568904594%;
+                margin: 0;
+                margin-right: 1.76678445229682%;
+                border-right: 2px solid #e0e0e0;
+                padding: 7.5px 0;
+                text-align: left;
+            }
+
+            .we-are .sec-tit p{
+                width: 68.19787985865724%;
+                text-align: left;
+            }
+
+            .we-are .sec-list{
+                width: calc(50% - 10px);
+                margin-right: 20px;
+            }
+
+            .we-are .sec-list:nth-child(2n){
+                margin-right: 0;
+            }
+
+            /* work 스타일 */
+            .work .sec-list{
+                float: left;
+                width: 50%;
+            }
+
+            /* blog 스타일 */
+            .blog .sec-list{
+            margin-bottom: 0;
+        }
+
+             /* map 스타일 */
+            .map .jumbo{
+                max-width: 1132px;
+            }
+
+            .map iframe{
+                height: 500px;
             }
 
         }
 
-        /* 데스크탑(최소 뷰토프 너비 1200px) 스타일 */
-        @media(min-width:1200px){}
+        
+        /* 데스크탑(최소 뷰포트크기 1200px) 스타일 */
+        @media (min-width:1200px){
+
+            .container{
+                padding: 0;
+            }
+
+            .sec-tit{
+                font-size: 42px;
+                text-align: left;
+            }
+
+             /* we are 스타일 */
+            .we-are .sec-tit h2{
+                width: 484px;
+                margin-right: 20px;
+            }
+
+            .we-are .sec-tit p{
+                width: 628px;
+            }
+
+            .we-are .sec-list{
+                width: 268px;
+            }
+
+            .we-are .sec-list:nth-child(2){
+                margin-right: 20px;
+            }
+
+            .we-are .sec-list:last-child{
+                margin-right: 0;
+            }
+
+             /* work 스타일 */
+             .work .sec-list{
+                float: left;
+                width: 25%;
+            }
+
+            /* blog 스타일 */
+            .blog .sec-tit{
+                width: 268px;
+                margin-right: 20px;
+            }
+
+            .blog .sec-contents{
+                width: 844px;
+            }
+
+            .blog .sec-list{
+                width: 268px;
+            }
+
+        }
 
     </style>
 </head>
@@ -104,12 +498,17 @@
             <div class="container jumbo">
                 <div class="contents clearfix">
                     <h1><a href="./index.html">INDIGO</a></h1>
-                    <div class="btn-nav">
+                    <div class="btn-nav" onclick="
+                        document.querySelector('.nav').style.display = 'block';
+                    ">
                         <span>네비게이션 호출 버튼</span>
                     </div>
                     
                     <nav class="nav">
-                        <ul>
+                        <div class="btn-close" onclick="
+                            document.querySelector('.nav').style.display = 'none';
+                        ">닫기</div>
+                        <ul class="clearfix">
                             <li><a href="#">HOME</a></li>
                             <li><a href="#">WE ARE</a></li>
                             <li><a href="#">WORK</a></li>
@@ -120,6 +519,241 @@
                 </div>
             </div>
         </header>
+        <section class="sec main-slider">
+            <div class="container jumbo">
+                <div class="contents">
+                    <div class="sec-tit hidden-tit">
+                        <h2>메인 슬라이더</h2>
+                    </div>
+                    <div class="sec-contents">
+                        <!-- Slider main container -->
+                        <div class="swiper">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                            <!-- Slides -->
+                                <div class="swiper-slide"><img src="./images/slide00.jpg" alt="슬라이더1"></div>
+                                <div class="swiper-slide"><img src="./images/slide00.jpg" alt="슬라이더2"></div>
+                                <div class="swiper-slide"><img src="./images/slide00.jpg" alt="슬라이더3"></div>
+                                <div class="swiper-slide"><img src="./images/slide00.jpg" alt="슬라이더4"></div>
+                                <div class="swiper-slide"><img src="./images/slide00.jpg" alt="슬라이더5"></div>
+                            </div>
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination"></div>
+                        
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        
+                            <!-- If we need scrollbar -->
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="sec we-are">
+            <div class="container">
+                <div class="contents">
+                    <div class="sec-tit clearfix">
+                        <h2>we are</h2>
+                        <p> 
+                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                            piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                        </p>
+                    </div>    
+                    <div class="sec-contents clearfix">
+                        <div class="sec-list sec-list01">
+                            <div class="img-box"><img src="./images/ico-pro01.jpg" alt="HOME"></div>
+                            <h3 class="sec-list-tit">HOME</h3>
+                            <p class="sec-list-txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+
+                        <div class="sec-list sec-list02">
+                            <div class="img-box"><img src="./images/ico-pro02.jpg" alt="WE ARE"></div>
+                            <h3 class="sec-list-tit">WE ARE</h3>
+                            <p class="sec-list-txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+
+                        <div class="sec-list sec-list03">
+                            <div class="img-box"><img src="./images/ico-pro03.jpg" alt="WORK"></div>
+                            <h3 class="sec-list-tit">WORK</h3>
+                            <p class="sec-list-txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                        
+                        <div class="sec-list sec-list04">
+                            <div class="img-box"><img src="./images/ico-pro04.jpg" alt="BLOG"></div>
+                            <h3 class="sec-list-tit">BLOG</h3>
+                            <p class="sec-list-txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+                        </div>
+                    </div>                 
+                </div>
+            </div>
+        </section>
+        <section class="sec divider">
+            <div class="container">
+                <div class="contents">
+                    <div class="sec-tit">
+                        <h2>
+                            LONG
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="sec work">
+            <div class="container jumbo">
+                <div class="contents">
+                    <div class="sec-tit">
+                        <h2>work</h2>
+                    </div>
+
+                    <div class="sec-contents clearfix">
+                        <div class="sec-list sec-list01">
+                            <div class="img-box"><img src="./images/img-work01.jpg" alt="달리기"></div>
+                            <h3 class="sec-list-tit">달리기</h3>
+                            <p class="sec-list-txt">육상</p>
+                        </div>
+
+                        <div class="sec-list sec-list02">
+                            <div class="img-box"><img src="./images/img-work02.jpg" alt="미식축구"></div>
+                            <h3 class="sec-list-tit">미식축구</h3>
+                            <p class="sec-list-txt">구기</p>
+                        </div>
+
+                        <div class="sec-list sec-list03">
+                            <div class="img-box"><img src="./images/img-work03.jpg" alt="헬스"></div>
+                            <h3 class="sec-list-tit">헬스</h3>
+                            <p class="sec-list-txt">트레이닝</p>
+                        </div>
+
+                        <div class="sec-list sec-list04">
+                            <div class="img-box"><img src="./images/img-work04.jpg" alt="달리기2"></div>
+                            <h3 class="sec-list-tit">달리기2</h3>
+                            <p class="sec-list-txt">육상</p>
+                        </div>
+
+                        <div class="sec-list sec-list05">
+                            <div class="img-box"><img src="./images/img-work05.jpg" alt="권투"></div>
+                            <h3 class="sec-list-tit">권투</h3>
+                            <p class="sec-list-txt">격투기</p>
+                        </div>
+
+                        <div class="sec-list sec-list06">
+                            <div class="img-box"><img src="./images/img-work06.jpg" alt="아이스하키"></div>
+                            <h3 class="sec-list-tit">아이스하키</h3>
+                            <p class="sec-list-txt">빙상</p>
+                        </div>
+
+                        <div class="sec-list sec-list07">
+                            <div class="img-box"><img src="./images/img-work07.jpg" alt="스케이트보드"></div>
+                            <h3 class="sec-list-tit">스케이트보드</h3>
+                            <p class="sec-list-txt">레포츠</p>
+                        </div>
+
+                        <div class="sec-list sec-list08">
+                            <div class="img-box"><img src="./images/img-work08.jpg" alt="농구"></div>
+                            <h3 class="sec-list-tit">농구</h3>
+                            <p class="sec-list-txt">구기</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="sec mini-divider">
+            <div class="container">
+                <div class="contents">
+                    <div class="sec-tit">
+                        <h2>
+                            MINI
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="sec blog">
+            <div class="container">
+                <div class="contents clearfix">
+                    <div class="sec-tit">
+                        <h2>
+                            blog
+                        </h2>
+                    </div>
+                    <div class="sec-contents clearfix">
+                        <div class="sec-list sec-list01">
+                            <div class="img-box"><img src="./images/img-blog01.jpg" alt="blog1"></div>
+                            <h3 class="sec-list-tit">OCT 30, 2016</h3>
+                            <p class="sec-list-txt">There are many variations of passages of Lorem Ipsum</p>
+                        </div>
+                        <div class="sec-list sec-list02">
+                            <div class="img-box"><img src="./images/img-blog02.jpg" alt="blog2"></div>
+                            <h3 class="sec-list-tit">OCT 30, 2016</h3>
+                            <p class="sec-list-txt">There are many variations of passages of Lorem Ipsum</p>
+                        </div>
+                        <div class="sec-list sec-list03">
+                            <div class="img-box"><img src="./images/img-blog03.jpg" alt="blog3"></div>
+                            <h3 class="sec-list-tit">OCT 30, 2016</h3>
+                            <p class="sec-list-txt">There are many variations of passages of Lorem Ipsum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section class="sec contact">
+            <div class="container">
+                <div class="contents">
+                    <div class="sec-tit">
+                        <h2>
+                            contact
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <section class="sec map">
+            <div class="container jumbo">
+                <div class="contents">
+                    <div class="sec-tit hidden-tit">
+                        <h2>map</h2>
+                    </div>    
+                        <div class="sec-contents">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.518461558988!2d126.67502091558798!3d37.54284703324167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7e16f11f3635%3A0xd3d8fb87825f4f2a!2z7Jew7Z2s7KeB7JeF7KCE66y47ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1639641643546!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                        
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <div class="contents">
+                    INDIGO
+                </div>
+            </div>
+        </footer>
     </section>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            autoHeight: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
 </body>
 </html>
