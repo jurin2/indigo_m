@@ -65,6 +65,135 @@
             width: 100%;
         }
 
+        /* intro 스타일 */
+        .wrap .intro{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 999999;
+            background-color: #000;
+
+            margin-bottom: 0;
+            animation: top-move 0.3s 10s forwards;
+        }
+        .intro-box{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translate(0,-50%);
+            animation: opacity 3s 6s;
+        }
+
+        .intro-box h2{
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .intro-box span{
+            display: inline;
+            color: #fff;
+            filter: blur(5px);
+            animation: blur 0.5s forwards 1s;
+        }
+
+        .intro-box span:nth-child(2){
+            animation-delay: 1.3s;
+        }
+
+        .intro-box span:nth-child(3){
+            animation-delay: 1.6s;
+        }
+
+        .intro-box span:nth-child(4){
+            animation-delay: 1.9s;
+        }
+
+        .intro-box span:nth-child(5){
+            animation-delay: 2.2s;
+        }
+
+        .intro-box span:nth-child(6){
+            animation-delay: 2.5s;
+        }
+
+        .intro-box span:nth-child(7){
+            animation-delay: 2.8s;
+        }
+
+        .intro-box span:nth-child(8){
+            animation-delay: 3.1s;
+        }
+
+        .intro-box span:nth-child(9){
+            animation-delay: 3.4s;
+        }
+
+        .intro-box hr{
+            width: 0;
+            background-color: #fff;
+            animation: width100 0.3s linear 4s forwards;
+        }
+
+        @keyframes top-move {
+            from{
+                top: 0;
+                bottom: 0;
+            }
+            to{
+                top: -100%;
+                bottom: 100%;
+            }
+        }
+
+        @keyframes blur {
+            from{
+                filter: blur(5px);
+            }
+            to{
+                filter: blur(0);
+            }
+        }
+
+        @keyframes width100 {
+            from{
+                width: 0;
+            }
+            to{
+                width: 100%;
+            }
+        }
+
+        @keyframes opacity {
+            from{
+                opacity: 1;
+            }
+            40%{
+                opacity: 0;
+            }
+            60%{
+                opacity: 1;
+            }
+            70%{
+                opacity: 0;
+            }
+            75%{
+                opacity: 1;
+            }
+            77.5%{
+                opacity: 0;
+            }
+            78.25%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+
+
         /* header 스타일 */
         .header{
             background-color: #fff;
@@ -206,7 +335,7 @@
             margin-bottom: 50px;
         }
 
-        ..we-are .sec-list:last-child{
+        .we-are .sec-list:last-child{
             margin-bottom: 0;
         }
 
@@ -496,6 +625,27 @@
 </head>
 <body>
     <section class="wrap">
+        <section class="sec intro">
+            <div class="container">
+                <div class="contents">
+                    <div class="intro-box">
+                        <h2>
+                            <span>L</span>
+                            <span>o</span>
+                            <span>d</span>
+                            <span>i</span>
+                            <span>n</span>
+                            <span>g</span>
+                            <span>.</span>
+                            <span>.</span>
+                            <span>.</span>
+                        </h2>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+
+        </section>
         <header class="header">
             <div class="container jumbo">
                 <div class="contents clearfix">
